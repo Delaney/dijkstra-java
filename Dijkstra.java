@@ -71,11 +71,11 @@ public class Dijkstra {
                 
                 if (currentDistance == 0){
                     this.distances.put(node, Integer.toString(newDistance));
-                    if (minElem == node){
+                    if (minElem == start){
                         this.paths.put(node, minElem);
                     }
                     else {
-                        String path = (String) this.paths.get(node);
+                        String path = (String) this.paths.get(minElem);
                         this.paths.put(node, path + ", " + minElem);
                     }
                 }
