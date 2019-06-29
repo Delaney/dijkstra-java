@@ -14,7 +14,7 @@ import java.util.*;
 public class Graph {
     
     String name;
-    private Set<Vertex> vertices;
+    protected Set<Vertex> vertices;
     
     public Graph(){
         this.name = null;
@@ -79,19 +79,60 @@ public class Graph {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Graph unilag = new Graph("Unilag");
+        Graph nav = new Graph("Unilag");
         
-        unilag.addVertex("1st Gate");
-        unilag.addVertex("Education");
-        unilag.addVertex("New Hall");
+        nav.addVertex("1st Gate"); //1st Gate
+        nav.addVertex("Chapel"); //Church/Mosque
+        nav.addVertex("Faculty of Education"); //Education
+        nav.addVertex("Amina/Kofo/Biobaku"); //Newest Hall
+        nav.addVertex("New Hall"); //New Hall
+        nav.addVertex("ISL/DLI"); //ISL
+        nav.addVertex("Health Center"); //Health Center
+        nav.addVertex("Moremi Car Park"); //Moremi Car Park
+        nav.addVertex("Senate Building"); //Senate Building
+        nav.addVertex("Jaja"); //Jaja
+        nav.addVertex("Ozolua"); //Ozolua
+        nav.addVertex("Faculty of Sciences"); //Sciences
+        nav.addVertex("Library"); //Library
+        nav.addVertex("Highrise"); //Highrise
+
+        nav.addEdge("1st Gate", "Chapel", 2);
+        nav.addEdge("1st Gate", "Faculty of Education", 1);
+
+        nav.addEdge("Chapel", "New Hall", 1);
+        nav.addEdge("Chapel", "ISL/DLI", 4);
+
+        nav.addEdge("Faculty of Education", "Amina/Kofo/Biobaku", 1);
+
+        nav.addEdge("Amina/Kofo/Biobaku", "ISL/DLI", 2);
+
+        nav.addEdge("New Hall", "ISL/DLI", 4);
+        nav.addEdge("New Hall", "Health Center", 3);
+        nav.addEdge("New Hall", "Moremi Car Park", 2);
+        nav.addEdge("New Hall", "Senate Building", 3);
+
+        nav.addEdge("ISL/DLI", "Health Center", 1);
+        nav.addEdge("ISL/DLI", "Jaja", 2);
+        nav.addEdge("ISL/DLI", "Ozolua", 3);
+
+        nav.addEdge("Health Center", "Jaja", 1);
+
+        nav.addEdge("Moremi Car Park", "Senate Building", 2);
+        nav.addEdge("Moremi Car Park", "Jaja", 1);
+
+        nav.addEdge("Senate Building", "Jaja", 3);
+        nav.addEdge("Senate Building", "Library", 1);
+
+        nav.addEdge("Jaja", "Ozolua", 2);
+        nav.addEdge("Jaja", "Faculty of Sciences", 1);
+        nav.addEdge("Jaja", "Library", 2);
+
+        nav.addEdge("Ozolua", "Highrise", 2);
+
+        nav.addEdge("Faculty of Sciences", "Library", 2);
         
-        unilag.printVertices();
-        
-        unilag.addEdge("1st Gate", "Education", 2);
-        unilag.addEdge("1st Gate", "New Hall", 5);
-        unilag.addEdge("New Hall", "Education", 3);
-        
-        System.out.println(unilag.findVertex("Education").noOfEdges());
+        //System.out.println(unilag.findVertex("Education").noOfEdges());
+        Dijkstra d = new Dijkstra(nav, "1st Gate");
         
     }
     

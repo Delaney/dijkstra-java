@@ -13,7 +13,7 @@ import java.util.*;
  */
 public class Vertex {
     public String name;
-    private Set<Edge> edges;
+    protected Set<Edge> edges;
     
     public Vertex(String name){
         this.name = name;
