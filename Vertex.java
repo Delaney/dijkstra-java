@@ -20,11 +20,28 @@ public class Vertex {
         this.edges = new HashSet<>();
     }
     
+    /**
+     * Gets the vertex name
+     * 
+     * @return <tt>String</tt> name
+     */
     public String getName(){
         return this.name;
     }
     
+    /**
+     * Adds an outgoing edge to the vertex
+     * 
+     * @param to
+     * 
+     * @param weight
+     * 
+     * @return <tt>true</tt> if the edge was added successfully
+     */
     public boolean addEdge(String to, int weight){
+        if (weight < 1){
+            return false;
+        }
         boolean exists = false;
         for (Edge edge : edges) {
             if (edge.destination == to){
@@ -40,6 +57,9 @@ public class Vertex {
         }
     }
     
+    /**
+     * Prints a list of all outgoing edges
+     */
     public void printEdges(){
         String list = "";
         Iterator<Edge> i = this.edges.iterator();
@@ -50,6 +70,11 @@ public class Vertex {
         System.out.println(list);
     }
     
+    /**
+     * Gets the number of outgoing edges
+     * 
+     * @return number of outgoing edges
+     */
     public int noOfEdges(){
         return this.edges.size();
     }
